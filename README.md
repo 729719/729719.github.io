@@ -132,5 +132,5 @@ Nếu bạn thấy **ENGINEERING FM Pro** hữu ích:
 🌐 https://729719.github.io/
 
 **Made with ❤️ for Engineering & Facility Management**
-
+© 2026 VÕ VĂN PHẢI — All Rights Reserved.
 </div>
