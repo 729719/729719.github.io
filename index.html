@@ -321,6 +321,165 @@
         .finish-screen { padding: 40px 10px; }
         .score-num { font-size: 84px; font-weight: 800; color: var(--ios-blue); letter-spacing: -2px; text-shadow: 0 4px 12px rgba(0,122,245,0.15); }
         #confetti-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; border-radius: 28px; }
+
+        /* Visual refresh only: keep all existing copy, markup and interactions intact. */
+        :root {
+            --ios-blue: #2463eb;
+            --ios-green: #18a875;
+            --ios-red: #e94e62;
+            --ios-bg: #f3f6fc;
+            --ios-card: #ffffff;
+            --ios-text: #152238;
+            --ios-subtext: #748198;
+            --gradient-accent: linear-gradient(135deg, #3478f6 0%, #5149d8 100%);
+            --gradient-green: linear-gradient(135deg, #25c28a 0%, #10966e 100%);
+            --gradient-red: linear-gradient(135deg, #ff7180 0%, #e4485c 100%);
+        }
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(ellipse at 8% 2%, rgba(75, 130, 245, 0.12), transparent 32rem),
+                radial-gradient(ellipse at 96% 24%, rgba(125, 111, 235, 0.10), transparent 28rem),
+                linear-gradient(180deg, #f8faff 0%, #f2f5fb 58%, #f7f8fc 100%);
+            color: var(--ios-text);
+            padding-bottom: 116px;
+        }
+        header {
+            padding: 20px 18px 18px;
+            background: rgba(255, 255, 255, 0.82);
+            border-bottom: 1px solid rgba(108, 128, 165, 0.12);
+            box-shadow: 0 8px 28px rgba(35, 55, 95, 0.045);
+        }
+        .logo-container { font-size: 27px; letter-spacing: -1px; }
+        .logo-main {
+            background: linear-gradient(100deg, #17243a 0%, #2867ed 38%, #7660e8 68%, #17243a 100%);
+            background-size: 220% auto;
+        }
+        .logo-sub {
+            border-radius: 10px;
+            padding: 3px 10px;
+            background: linear-gradient(145deg, #357cf6, #5147d4);
+            box-shadow: 0 5px 14px rgba(64, 91, 220, 0.24);
+        }
+        .container {
+            max-width: 760px;
+            margin: 18px auto 24px;
+            padding: 0 18px;
+        }
+        .page { transform: translateY(14px); }
+        .category-title {
+            position: relative;
+            margin: 30px 0 12px 4px;
+            padding-left: 12px;
+            color: #34445e;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.65px;
+        }
+        .category-title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            bottom: 2px;
+            width: 3px;
+            border-radius: 8px;
+            background: linear-gradient(180deg, #3478f6, #7564e8);
+        }
+        .ios-list {
+            border: 1px solid rgba(114, 133, 169, 0.13);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(34, 55, 95, 0.055), 0 2px 7px rgba(34, 55, 95, 0.025);
+        }
+        .ios-item {
+            padding: 17px 18px;
+            border-bottom-color: rgba(114, 133, 169, 0.12);
+        }
+        .ios-item:hover { background: #f8faff; }
+        .en { color: #192943; font-size: 16px; }
+        .vi { color: #2863d9; font-size: 14px; }
+        .phonetic-badge {
+            color: #9a5b20;
+            background: #fff8ed;
+            border-color: rgba(213, 151, 74, 0.19);
+            border-radius: 999px;
+        }
+        .speak-btn {
+            width: 42px;
+            height: 42px;
+            color: #fff;
+            background: linear-gradient(145deg, #5f93fb, #4568df);
+            box-shadow: 0 5px 14px rgba(62, 104, 222, 0.2);
+        }
+        .speak-btn:hover { background: linear-gradient(145deg, #4c83ef, #3c5fce); }
+        #quiz-container {
+            overflow: hidden;
+            border: 1px solid rgba(114, 133, 169, 0.14);
+            border-radius: 26px;
+            box-shadow: 0 16px 42px rgba(34, 55, 95, 0.09);
+        }
+        .progress-bar-container { background: #e9edf6; }
+        #progress-fill { background: linear-gradient(90deg, #31bd8b, #159d78); }
+        .option-btn {
+            border-color: rgba(104, 128, 170, 0.12);
+            background: #f6f8fc;
+            color: #253650;
+        }
+        .option-btn:hover:not(:disabled) {
+            background: #edf3ff;
+            border-color: rgba(55, 111, 226, 0.36);
+        }
+        .next-btn { box-shadow: 0 8px 20px rgba(60, 91, 215, 0.24); }
+        nav {
+            left: 50%;
+            right: auto;
+            bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
+            width: min(560px, calc(100% - 28px));
+            padding: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 23px;
+            background: rgba(255, 255, 255, 0.86);
+            box-shadow: 0 14px 36px rgba(30, 48, 83, 0.16), 0 2px 8px rgba(30, 48, 83, 0.06);
+            transform: translateX(-50%) translateZ(0);
+        }
+        nav button {
+            width: 25%;
+            min-width: 0;
+            min-height: 54px;
+            justify-content: center;
+            border-radius: 16px;
+            color: #7a879d;
+            font-size: 10px;
+            gap: 1px;
+        }
+        nav button .icon { font-size: 21px; margin-bottom: 2px; }
+        nav button.active {
+            color: #fff;
+            background: linear-gradient(145deg, #4383f4, #514bd7);
+            text-shadow: none;
+            box-shadow: 0 5px 14px rgba(65, 94, 213, 0.22);
+        }
+        nav button.active .icon { filter: grayscale(0) opacity(1); }
+        :focus-visible { outline: 3px solid rgba(50, 112, 237, 0.42); outline-offset: 3px; }
+        @media (max-width: 480px) {
+            header { padding-top: 18px; }
+            .logo-container { font-size: 24px; }
+            .logo-sub { font-size: 19px; }
+            .container { margin-top: 12px; padding: 0 13px; }
+            .category-title { margin-top: 25px; }
+            .ios-item { padding: 15px 14px; }
+            .phonetic-badge { font-size: 12px; }
+            #quiz-container { padding: 25px 17px; }
+            .question-text { font-size: 23px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 <body>
