@@ -322,163 +322,123 @@
         .score-num { font-size: 84px; font-weight: 800; color: var(--ios-blue); letter-spacing: -2px; text-shadow: 0 4px 12px rgba(0,122,245,0.15); }
         #confetti-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; border-radius: 28px; }
 
-        /* Visual refresh only: keep all existing copy, markup and interactions intact. */
+        /* Noel theme and light falling snow; visual-only overrides. */
         :root {
-            --ios-blue: #2463eb;
-            --ios-green: #18a875;
-            --ios-red: #e94e62;
-            --ios-bg: #f3f6fc;
+            --ios-blue: #16734d;
+            --ios-green: #239a58;
+            --ios-red: #c43d4d;
+            --ios-bg: #f4f7f4;
             --ios-card: #ffffff;
-            --ios-text: #152238;
-            --ios-subtext: #748198;
-            --gradient-accent: linear-gradient(135deg, #3478f6 0%, #5149d8 100%);
-            --gradient-green: linear-gradient(135deg, #25c28a 0%, #10966e 100%);
-            --gradient-red: linear-gradient(135deg, #ff7180 0%, #e4485c 100%);
+            --ios-text: #202923;
+            --ios-subtext: #7b827e;
+            --gradient-accent: linear-gradient(135deg, #218553 0%, #0f6040 100%);
+            --gradient-green: linear-gradient(135deg, #31ad67 0%, #16834a 100%);
+            --gradient-red: linear-gradient(135deg, #e85b66 0%, #bd3044 100%);
         }
         body {
-            min-height: 100vh;
-            background:
-                radial-gradient(ellipse at 8% 2%, rgba(75, 130, 245, 0.12), transparent 32rem),
-                radial-gradient(ellipse at 96% 24%, rgba(125, 111, 235, 0.10), transparent 28rem),
-                linear-gradient(180deg, #f8faff 0%, #f2f5fb 58%, #f7f8fc 100%);
-            color: var(--ios-text);
-            padding-bottom: 116px;
+            background: linear-gradient(180deg, #f0f7f2 0%, #f8faf7 48%, #f2f7f3 100%);
+            background-attachment: fixed;
+        }
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            top: -180px;
+            left: 0;
+            width: 100%;
+            height: calc(100% + 180px);
+            z-index: 1;
+            pointer-events: none;
+            background-repeat: repeat;
+            will-change: transform;
+        }
+        body::before {
+            opacity: 0.56;
+            background-image:
+                radial-gradient(2px 2px at 26px 42px, rgba(255,255,255,.95) 98%, transparent 100%),
+                radial-gradient(2px 2px at 112px 154px, rgba(255,255,255,.86) 98%, transparent 100%),
+                radial-gradient(1.5px 1.5px at 187px 76px, rgba(255,255,255,.92) 98%, transparent 100%);
+            background-size: 220px 250px, 280px 310px, 190px 220px;
+            animation: noel-snow-fall 18s linear infinite;
+        }
+        body::after {
+            opacity: 0.28;
+            background-image:
+                radial-gradient(3px 3px at 72px 115px, rgba(255,255,255,.92) 98%, transparent 100%),
+                radial-gradient(2.5px 2.5px at 216px 38px, rgba(255,255,255,.82) 98%, transparent 100%);
+            background-size: 330px 360px, 410px 440px;
+            animation: noel-snow-fall 30s linear infinite;
+        }
+        @keyframes noel-snow-fall {
+            from { transform: translate3d(0, -30px, 0); }
+            to { transform: translate3d(-24px, 250px, 0); }
         }
         header {
-            padding: 20px 18px 18px;
-            background: rgba(255, 255, 255, 0.82);
-            border-bottom: 1px solid rgba(108, 128, 165, 0.12);
-            box-shadow: 0 8px 28px rgba(35, 55, 95, 0.045);
+            position: sticky;
+            border-top: 3px solid transparent;
+            border-image: linear-gradient(90deg, #19744b 0%, #19744b 45%, #d3b66e 50%, #bd3548 55%, #bd3548 100%) 1;
+            box-shadow: 0 4px 30px rgba(24, 80, 52, 0.07);
         }
-        .logo-container { font-size: 27px; letter-spacing: -1px; }
         .logo-main {
-            background: linear-gradient(100deg, #17243a 0%, #2867ed 38%, #7660e8 68%, #17243a 100%);
-            background-size: 220% auto;
+            background: linear-gradient(90deg, #175c3c 0%, #b93849 48%, #175c3c 100%);
+            background-size: 200% auto;
         }
         .logo-sub {
-            border-radius: 10px;
-            padding: 3px 10px;
-            background: linear-gradient(145deg, #357cf6, #5147d4);
-            box-shadow: 0 5px 14px rgba(64, 91, 220, 0.24);
+            background: var(--gradient-red);
+            box-shadow: 0 4px 12px rgba(190, 49, 67, 0.22);
         }
         .container {
-            max-width: 760px;
-            margin: 18px auto 24px;
-            padding: 0 18px;
-        }
-        .page { transform: translateY(14px); }
-        .category-title {
             position: relative;
-            margin: 30px 0 12px 4px;
-            padding-left: 12px;
-            color: #34445e;
-            font-size: 13px;
-            font-weight: 800;
-            letter-spacing: 0.65px;
+            z-index: 2;
         }
-        .category-title::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 2px;
-            bottom: 2px;
-            width: 3px;
-            border-radius: 8px;
-            background: linear-gradient(180deg, #3478f6, #7564e8);
+        .category-title {
+            color: #385043;
+            text-shadow: 0 1px 0 rgba(255,255,255,.75);
         }
+        .category-title::first-letter { color: #b63b49; }
         .ios-list {
-            border: 1px solid rgba(114, 133, 169, 0.13);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(34, 55, 95, 0.055), 0 2px 7px rgba(34, 55, 95, 0.025);
+            border-color: rgba(49, 107, 73, 0.10);
+            box-shadow: 0 4px 24px rgba(26, 73, 48, 0.045);
         }
-        .ios-item {
-            padding: 17px 18px;
-            border-bottom-color: rgba(114, 133, 169, 0.12);
-        }
-        .ios-item:hover { background: #f8faff; }
-        .en { color: #192943; font-size: 16px; }
-        .vi { color: #2863d9; font-size: 14px; }
+        .ios-item { border-bottom-color: #edf2ee; }
+        .ios-item:hover { background: #f7fbf7; }
+        .en { color: #202923; }
+        .vi { color: #16734d; }
         .phonetic-badge {
-            color: #9a5b20;
-            background: #fff8ed;
-            border-color: rgba(213, 151, 74, 0.19);
-            border-radius: 999px;
+            color: #8f6426;
+            background: #fff9eb;
+            border-color: rgba(195, 157, 75, 0.18);
         }
         .speak-btn {
-            width: 42px;
-            height: 42px;
             color: #fff;
-            background: linear-gradient(145deg, #5f93fb, #4568df);
-            box-shadow: 0 5px 14px rgba(62, 104, 222, 0.2);
+            background: var(--gradient-accent);
+            box-shadow: 0 3px 10px rgba(22, 115, 77, 0.18);
         }
-        .speak-btn:hover { background: linear-gradient(145deg, #4c83ef, #3c5fce); }
+        .speak-btn:hover { background: var(--gradient-red); }
         #quiz-container {
-            overflow: hidden;
-            border: 1px solid rgba(114, 133, 169, 0.14);
-            border-radius: 26px;
-            box-shadow: 0 16px 42px rgba(34, 55, 95, 0.09);
+            box-shadow: 0 12px 36px rgba(27, 77, 49, 0.07);
+            border-color: rgba(49, 107, 73, 0.10);
         }
-        .progress-bar-container { background: #e9edf6; }
-        #progress-fill { background: linear-gradient(90deg, #31bd8b, #159d78); }
-        .option-btn {
-            border-color: rgba(104, 128, 170, 0.12);
-            background: #f6f8fc;
-            color: #253650;
-        }
+        .progress-bar-container { background: #e8efe9; }
+        .option-btn { background: #f4f8f4; border-color: rgba(49, 107, 73, 0.08); }
         .option-btn:hover:not(:disabled) {
-            background: #edf3ff;
-            border-color: rgba(55, 111, 226, 0.36);
+            background: #edf7ef;
+            border-color: rgba(35, 154, 88, 0.28);
         }
-        .next-btn { box-shadow: 0 8px 20px rgba(60, 91, 215, 0.24); }
         nav {
-            left: 50%;
-            right: auto;
-            bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
-            width: min(560px, calc(100% - 28px));
-            padding: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: 23px;
-            background: rgba(255, 255, 255, 0.86);
-            box-shadow: 0 14px 36px rgba(30, 48, 83, 0.16), 0 2px 8px rgba(30, 48, 83, 0.06);
-            transform: translateX(-50%) translateZ(0);
+            border-color: rgba(255, 255, 255, 0.58);
+            background: rgba(255, 255, 255, 0.88);
+            box-shadow: 0 16px 38px rgba(27, 67, 45, 0.13);
         }
-        nav button {
-            width: 25%;
-            min-width: 0;
-            min-height: 54px;
-            justify-content: center;
-            border-radius: 16px;
-            color: #7a879d;
-            font-size: 10px;
-            gap: 1px;
-        }
-        nav button .icon { font-size: 21px; margin-bottom: 2px; }
         nav button.active {
             color: #fff;
-            background: linear-gradient(145deg, #4383f4, #514bd7);
+            background: var(--gradient-accent);
             text-shadow: none;
-            box-shadow: 0 5px 14px rgba(65, 94, 213, 0.22);
+            box-shadow: 0 5px 14px rgba(21, 106, 69, 0.22);
         }
         nav button.active .icon { filter: grayscale(0) opacity(1); }
-        :focus-visible { outline: 3px solid rgba(50, 112, 237, 0.42); outline-offset: 3px; }
-        @media (max-width: 480px) {
-            header { padding-top: 18px; }
-            .logo-container { font-size: 24px; }
-            .logo-sub { font-size: 19px; }
-            .container { margin-top: 12px; padding: 0 13px; }
-            .category-title { margin-top: 25px; }
-            .ios-item { padding: 15px 14px; }
-            .phonetic-badge { font-size: 12px; }
-            #quiz-container { padding: 25px 17px; }
-            .question-text { font-size: 23px; }
-        }
         @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                scroll-behavior: auto !important;
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
+            body::before, body::after { animation: none; }
         }
     </style>
 </head>
