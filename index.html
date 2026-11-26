@@ -380,12 +380,15 @@
             box-shadow: 0 4px 30px rgba(24, 80, 52, 0.07);
         }
         .logo-main {
-            background: linear-gradient(90deg, #175c3c 0%, #b93849 48%, #175c3c 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background: none;
+            color: #17633f;
+            -webkit-background-clip: border-box;
+            background-clip: border-box;
+            -webkit-text-fill-color: #17633f;
+            animation: none;
+            filter: drop-shadow(0 1px 1px rgba(23, 99, 63, 0.12));
         }
+        .logo-container:hover .logo-main { filter: drop-shadow(0 3px 8px rgba(189, 48, 68, 0.2)); }
         .logo-sub {
             background: var(--gradient-red);
             box-shadow: 0 4px 12px rgba(190, 49, 67, 0.22);
